@@ -1,0 +1,286 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NEW defs.tex file hack
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PACKAGES TO BE USED
+
+% \usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{wrapfig}
+% \usepackage{url}
+\usepackage{pdfpages}
+
+\usepackage{color}
+\usepackage{xcolor}
+%\usepackage{floatrow}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    allcolors=blue
+    }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% footnote with no marker
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bibliography
+
+\usepackage[backend=biber]{biblatex}
+
+\DefineBibliographyStrings{english}{andothers={+}}
+
+\newbibmacro{name:newformat}{%
+   \namepartfamily  % #1->\namepartfamily, #2->\namepartfamilyi
+   }
+
+\DeclareNameFormat{default}{%
+  \nameparts{#1}% split the name data, will not be necessary in future versions
+  \usebibmacro{name:newformat}%
+  \usebibmacro{name:andothers}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % SET THE FONT (FONTSPEC PACKAGE REQUIRED!)
+
+% %\renewcommand{\familydefault}{\sfdefault}
+% \setmainfont{Arial}
+
+% %\newfontfamily\Condensed[Ligatures=TeX]{ArialNarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PAGE DIMENSIONS 
+
+\textheight 10in
+\textwidth 6.6in
+\topmargin -35pt
+\oddsidemargin -15pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PARAGRAPH PROPERTIES
+\parindent=0pt
+\parskip=1pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% SECTION COMMANDS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{project}
+\newcommand{\project}[2]
+ {\refstepcounter{project}
+ \addcontentsline{toc}{section}{\theproject:\ \ #2 -- (#1)}
+ {\Large\fontseries{b}\selectfont{
+   \theproject:\ \ #2 -- (#1)}\par}
+ \vspace{0mm}\ignorespaces
+ \setcounter{footnote}{0}
+ }
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% the \ftedata{}: takes one argumemnt.
+
+%\newcommand{\ftedata}[1]
+%{{\centering\sffamily\fontseries{sbc}
+%  \selectfont{#1}\par}\vspace{1mm}\ignorespaces}
+
+\newcommand{\ftedata}[1]
+{{%\sffamily%\fontseries{sbc}\selectfont{#1}
+#1\par}\vspace{0mm}\ignorespaces}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% the \facilites{}: takes one argumemnt.
+
+%\newcommand{\facilities}[1]
+%{{\centering\sffamily\fontseries{sbc}
+%\selectfont{#1}\par}\vspace{1mm}\ignorespaces}
+
+\newcommand{\facilities}[1]
+{{%\sffamily%\fontseries{sbc}\selectfont{#1}
+#1\par}\vspace{1mm}\ignorespaces}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Redefine \footnotesize to normal size font
+
+\renewcommand{\footnotesize}{\fontsize{11pt}{11pt}\selectfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Figure captions
+
+\usepackage[format=plain,font=small,labelfont=bf,skip=-5pt,belowskip=-20pt]{caption}
+\renewcommand{\figurename}{Fig.}
+
+% headings
+
+\newcommand{\heading}[1]
+{\par\vspace{2mm}\noindent{\large\fontseries{b}\selectfont{\bf #1}}}
+
+% subheadings
+\newcommand{\Condensed}{}
+\newcommand{\sstrong}[1]{\textbf{#1}}
+
+\newcommand{\subheading}[1]
+{\par\vspace{1.5mm}\noindent{\Condensed\sstrong{#1}}}
+
+% metadata
+
+\newcommand{\metadata}[1]
+ {{\centering\small{#1}\par}\vspace{1mm}\ignorespaces}
+
+% psummary
+
+\newenvironment{psummary}[1][]{\vspace{1mm}\par\hrule\vspace{0.5mm}\noindent\metadata{{#1}}{\par\noindent\sstrong{Abstract\ }}}{\par\vspace{2mm}\hrule}
+
+% compact lists
+
+\newenvironment{shortitem}
+{\begin{list}
+{$\bullet$}{\topsep=0pt\itemsep=0pt\parsep=0pt\parskip=0pt\leftmargin=12pt}}
+{\end{list}}
+
+\newenvironment{compactlist}{\begin{list}{$\triangleright$}%
+	{\topsep=0pt\itemsep=0pt\parsep=0pt\parskip=0pt\leftmargin=12pt}}%
+	{\end{list}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% JOURNAL SHORTCUTS
+
+\def\mnras{{MNRAS}}
+\def\pr{{PR}}
+\def\prd{{PRD}}
+\def\prl{{PRL}}
+\def\apj{{ApJ}}
+\def\apjs{{ApJS}}
+\def\apjl{{AJL}}
+\def\apjl{{ApJL}}
+\def\aa{{A\&A}}
+\def\nat{{Nat.}}
+\def\astropart{{Astro-particle Phys.~}}
+\def\rvmp{{RMP}}
+\def\physrep{{PR}}
+\def\jcap{JCAP}
+\def\araa{ARAA}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ABBREVIATIONS
+
+\def\LCDM{\mbox{$\Lambda$CDM}}
+\def\Lsun{\mbox{L$_\odot$}}
+\def\Msun{\mbox{M$_\odot$}}
+\def\spose#1{\hbox to 0pt{#1\hss}}
+\def\simlt{\mathrel{\spose{\lower 3pt\hbox{$\mathchar"218$}}
+     \raise 2.0pt\hbox{$\mathchar"13C$}}}
+\def\simgt{\mathrel{\spose{\lower 3pt\hbox{$\mathchar"218$}}
+     \raise 2.0pt\hbox{$\mathchar"13E$}}}
+\def\eg{{\textit{e.g.}}}
+\def\gtsima{$\; \buildrel > \over \sim \;$}
+\def\ltsima{$\; \buildrel < \over \sim \;$}
+\def\gsim{\lower.5ex\hbox{\gtsima}}
+\def\lsim{\lower.5ex\hbox{\ltsima}}
+\def\simgt{\lower.5ex\hbox{\gtsima}}
+\def\simlt{\lower.5ex\hbox{\ltsima}}
+\def\simpr{\lower.5ex\hbox{\prosima}}
+\def\la{\lsim}
+\def\ga{\gsim}
+\def\zcr{Z_{\rm cr}}
+\def\ekin{\mbox{\cal E}_{\rm kin}}
+\def\ekin{{\cal E}_{\rm kin}}
+\def\fgg{f_{\gamma\gamma}}
+\def\Lya{Ly$\alpha$~}
+\def\sngg{SN$_{\gamma\gamma}$~}
+\def\msun{{M_\odot}} 
+
+% Arial doesn't do small caps (so replaced with normal caps)
+\newcommand{\spitzer}{\emph{Spitzer}}
+\newcommand{\jwst}{\emph{JWST}}
+\newcommand{\sam}{\emph{SAM}}
+\newcommand{\swift}{\emph{Swift}}
+\newcommand{\wfirst}{\emph{WFirst}}
+\newcommand{\euclid}{\emph{Euclid}}
+\newcommand{\hubble}{\emph{Hubble}}
+\newcommand{\herschel}{\emph{Herschel}}
+\newcommand{\webb}{\emph{Webb}}
+\newcommand{\bluetides}{\textsc{Bluetides}}
+%\newcommand{\eagle}{\textsc{Eagle}}
+\newcommand{\eagle}{{EAGLE}}
+%\newcommand{\colibre}{\textsc{Colibre}}
+\newcommand{\colibre}{{COLIBRE}}
+%\newcommand{\gadget}{\textsc{Gadget}}
+\newcommand{\gadget}{{GADGET}}
+\newcommand{\lgal}{\textsc{L-Galaxies}}
+\newcommand{\arepo}{\textsc{AREPO}}
+\newcommand{\cosmomc}{\textsc{CosmoMC}}
+\newcommand{\SO}{\textsc{Simons Observatory}}
+\newcommand{\planck}{\textsc{Planck}}
+\newcommand{\getdist}{\textsc{GetDist}}
+
+\newcommand{\Eg}{E_{\mathrm{G}}}
+\newcommand{\kms}{\mbox{$\mbox{\,km\,s}^{-1}$}}
+\newcommand{\Mpc}{h^{-1}\, \mathrm{Mpc}}
+\newcommand{\Msol}{h^{-1}M_{\odot}}
+\newcommand{\hMpc}{\mbox{ $h^{-1}{\rm Mpc}$}}
+\newcommand{\volunit}{\mbox{\,$h^{-3}$\,Mpc$^{3}$}}
+\newcommand{\del}{\delta}
+\newcommand{\Del}{\Delta} 
+\newcommand{\nb}{\bar{n}}
+\newcommand{\etalb}{et al.}
+\def\etal{et~al.~}
+
+
+\def\spose#1{\hbox to 0pt{#1\hss}}
+
+\def\simgt{\mathrel{\spose{\lower 3pt\hbox{$\mathchar"218$}}
+     \raise 2.0pt\hbox{$\mathchar"13E$}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% highlighting macros
+
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\green}[1]{{\color{green}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\newcommand{\brown}[1]{{\color{brown}{#1}}}
+\newcommand{\white}[1]{{\color{white}{#1}}}
+
+% Comments, etc
+\newcommand{\changed}[2][{}]{\red{\sout{#1}}\blue{#2}}
+%\newcommand{\changed}[2][{}]{#2}
+\newcommand{\comment}[1]{\brown{#1}}
+\newcommand{\todo}[1]{\red{#1}}

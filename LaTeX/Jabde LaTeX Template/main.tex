@@ -1,0 +1,36 @@
+\documentclass[a4paper,11pt, twocolumn]{article}
+\usepackage{fancyhdr}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{1pt}{*1}{*1}
+\titlespacing{\subsection}{0.2pt}{*0.2}{*0.2}
+\titlespacing{\subsubsection}{0.2pt}{*0.2}{*0.2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{defs.tex}
+\input{mydefs.tex}
+
+\addbibresource{bibliography.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\fancyhf{}
+\pagestyle{fancy}
+\lhead{Jabde.com}
+\rhead{Roper et All}
+\cfoot{\thepage }
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+
+% PROJECTS
+\newcommand{\projectpath}{} % Necessary because of the inclusion of extra files
+\begin{refsection} 
+\include{project}
+\end{refsection}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
